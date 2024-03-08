@@ -1,1 +1,2 @@
-# sqlalchemy-challenge
+The climate_stater file allows us to see the precipitation amount from the past 12 months.  We then look at the stations of the date and their temperature.
+We then made an app that pulls in our precipitation, stations, and temperature date from our file.
