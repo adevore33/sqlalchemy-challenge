@@ -116,14 +116,15 @@ def temp_data(start):
     temp_measures = session.query(func.min(measurement.tobs), func.max(measurement.tobs), func.avg(measurement.tobs)).\
         filter(measurement.date >= start_date).all()
 
+
     temp_measures_data = []
-    for Tdate, TMIN, TMAX, TAVG in temp_measures:
+    for TMIN, TMAX, TAVG in temp_measures:
           temp_measures_dict = {}
-          temp_measures_dict["Date"] = Tdate
           temp_measures_dict["Min_Temp"] = TMIN
           temp_measures_dict["Max_Temp"] = TMAX
           temp_measures_dict["Avg_Temp"] = TAVG
           temp_measures_data.append(temp_measures_dict)
+        
     
     return jsonify(temp_measures_data)
 
@@ -141,9 +142,8 @@ def temp_between(strt,end):
         filter((measurement.date >= s_date)| (measurement.date <= e_date)).all()
 
     temp_btwn_data = []
-    for Bdate, BMIN, BMAX, BAVG in temp_btwn:
+    for BMIN, BMAX, BAVG in temp_btwn:
           temp_btwn_dict = {}
-          temp_btwn_dict["Date"] = Bdate
           temp_btwn_dict["Min_Temp"] = BMIN
           temp_btwn_dict["Max_Temp"] = BMAX
           temp_btwn_dict["Avg_Temp"] = BAVG
